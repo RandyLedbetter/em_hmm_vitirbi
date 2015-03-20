@@ -1,0 +1,157 @@
+<div class="col-md-12" id="em-start-view">
+ <div class="row">
+    <div class="col-md-12">
+
+
+      <table class="table table-bordered table-condensed table-striped">
+        <tbody class="">
+          <tr>
+            <td class="cwm-green-glass">
+              <h3>ROC</h3>
+              <p>
+                 A receiver operating characteristic (ROC), or simply ROC curve, is a graphical plot which illustrates the performance of a binary classifier system as its discrimination threshold is varied. It is created by plotting the fraction of true positives out of the total actual positives (TPR = true positive rate) vs. the fraction of false positives out of the total actual negatives (FPR = false positive rate), at various threshold settings. TPR is also known as sensitivity (also called recall in some fields), and FPR is one minus the specificity or true negative rate. <span class="hmm-attribution-text">Source: Wikipedia.org</span>
+              </p>
+
+              <h3>Instructions</h3>
+              <p>
+                This application will take initial parameters, in the form of two space delimited input files, via the form below. One file must consist of a sequence of 8 initial probability values in the following order: P(B|B), P(L|B), P(B|L), P(L|L), P(H|B), P(T|B), P(H|L), and P(T|L). The other file must consist of a sequence of 1's and 0's representing Heads and Tails, respectively. Additionally, you may enter another file representing the actual Balanced / Loaded state sequence that Vertibi's most probable path output will ultimately be compared to. Once you have entered valid inputs and clicked the SUBMIT button, ROC graphs will then be rendered for your inspection.
+              </p>
+            </td>
+          </tr>
+      </tbody>
+      </table>
+    </div><!--row-->
+  </div><!--col-md-12-->
+
+  <div class="row" id="hmm-roc-form-inputs">
+    
+  <div class="col-md-3">
+    <table class="table table-bordered table-condensed table-striped">
+      <thead class="cwm-black-glass">
+        <th>Upload Sensory and Transition Probability File</th>
+      </thead>
+      <tbody class="cwm-off-white-glass">
+        <tr>
+          <td class="start-screen-form-box">
+            <output id="probability-file-list"></output>
+          </td>
+        </tr>
+        <tr class="cwm-white-glass">
+          <td>
+            <div class="cwm-black-upload-btn pull-right hmm-upload-submit-btn" id="cwm-black-upload-btn1">
+              <input type="file" id="probability-file"  name="files[]"/>
+              <output id="probability-file-list"></output>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+  <div class="col-md-3">
+    <table class="table table-bordered table-condensed table-striped">
+      <thead class="cwm-black-glass">
+        <th>Upload Heads / Tails Observation Sequence File</th>
+      </thead>
+      <tbody class="cwm-off-white-glass">
+        <tr>
+          <td class="start-screen-form-box">
+            <output id="observation-file-list"></output>
+          </td>
+        </tr>
+        <tr class="cwm-white-glass">
+          <td>
+            <div class="cwm-black-upload-btn pull-right hmm-upload-submit-btn" id="cwm-black-upload-btn2">
+              <input type="file" id="observation-file"  name="files[]"/>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <table class="table table-bordered table-condensed table-striped">
+      <thead class="cwm-black-glass">
+        <th>Upload Sequence of States File</th>
+      </thead>
+      <tbody class="cwm-off-white-glass">
+        <tr>
+          <td class="start-screen-form-box">
+            <output id="state-sequence-file-list"></output>
+          </td>
+        </tr>
+        <tr class="cwm-white-glass">
+          <td>
+            <div class="cwm-black-upload-btn pull-right hmm-upload-submit-btn" id="cwm-black-upload-btn3">
+              <input type="file" id="state-sequence-file"  name="files[]"/>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3">
+    <table class="table table-bordered table-condensed table-striped">
+      <thead class="cwm-black-glass">
+        <th>Specify the Value of N (Number of Iterations)</th>
+      </thead>
+      <tbody class="cwm-off-white-glass">
+        <tr>
+          <td class="start-screen-form-box">
+            <form class="form" role="form" style="padding: 15px;">
+            
+            <div class="form-group">
+              <label class="" for="hmm-number-input">N:</label>
+              <input id="hmm-number-input" class="hmm-number-input" type="number" min="0">
+            </div>
+          </form>
+          <p id="hmm-number-input-error" class="hmm-file-error-text text-danger hidden">N must be a postive integer.</p>
+          </td>
+        </tr>
+        <tr class="cwm-white-glass">
+          <td><div class="cwm-submit-button pull-right" id="cwm-submit-button-roc"></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row cwm-white-glass">
+    <h4 id="hmm-file-submit-error-msg" class="hidden text-danger pull-right">One or more input files are missing or contain errors</h4>
+  </div> 
+
+</div><!--row-->
+
+
+
+<div class="row hidden" id="hmm-roc-results">
+    <div class="col-md-6">
+      <div id="chart1"></div>
+    </div>
+ 
+ <div class="col-md-6">
+    <table class="table table-bordered table-condensed table-striped">
+      <thead class="cwm-black-glass">
+        <th>Specify the Value of N (Number of Iterations)</th>
+      </thead>
+      <tbody class="cwm-off-white-glass">
+        <tr>
+          <td class="start-screen-form-box">
+            <form class="form" role="form" style="padding: 15px;">
+            
+            <div class="form-group">
+              <label class="" for="hmm-number-input">N:</label>
+              <input id="hmm-number-input2" class="hmm-number-input" type="number" min="0">
+            </div>
+          </form>
+          <p id="hmm-number-input-error" class="hmm-file-error-text text-danger hidden">N must be a postive integer.</p>
+          </td>
+        </tr>
+        <tr class="cwm-white-glass">
+          <td><div class="cwm-submit-button pull-right" id="cwm-submit-button-roc"></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ 
+
+</div><!--row-->

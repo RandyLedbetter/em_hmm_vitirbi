@@ -1,0 +1,11 @@
+{
+    "name": "em-vertibi",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+      "connect": "~2.9.0"
+  },
+  "engines": {
+    "node": "0.6.x"
+  }
+}

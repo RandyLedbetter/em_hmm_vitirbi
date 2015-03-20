@@ -1,0 +1,33 @@
+<table class="table table-condensed hmm-upload-table">
+  <thead>
+    <tr>
+      <th><h2 class="text-info">Upload Sensory and Transition Probabilities File</h2></th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <tr>
+      <td class="hmm-text-grey hmm-strong-lead">Select a comma or space delimited file from your computer file system. It should represent a
+          sequence sensory and transition probabilities. The length of the sequence must be equal
+          to 8, and the eight probabilities must be in the following order: <span class="text-info">
+          <strong>P(B|B), P(B|L), P(L|L), P(L|B), P(H|B), P(T|B), P(H|L), and P(T|L)</strong></span>. 
+          For example, a correctly formatted input file would look like this:
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>0.7, 0.3, 0.6, 0.4, 0.5, 0.5, 0.9, 0.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="text-info">OR</span></strong></td>
+    </tr>
+    <tr>
+      <td>
+        <strong>0.7 0.3 0.6 0.4 0.5 0.5 0.9 0.1</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="upload">
+  <input type="file" id="probability-file"  name="files[]"/>
+</div>
+<output id="probability-file-list"></output>

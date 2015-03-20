@@ -1,0 +1,74 @@
+<div class="col-md-12">
+ <div class="row">
+    <div class="col-md-8">
+      <table class="table table-bordered table-condensed table-striped">
+        <tbody class="">
+          <tr>
+            <td class="cwm-green-glass">
+              <h3>Generate Random Data</h3>
+              <p>
+                Specify a length for a Heads and Tails Sequence. A sequence of that length, consisting of heads/tails in the form of 1's and 0's, will then be randomly generated. Additionally, a Balanced (B) / Loaded (L) state sequence of equal length will be generated based on the default Hidden Markov Model initial probabilities of: P(B|B) = 0.6, P(L|B) = 0.3, P(B|L) = 0.4, P(L|L) = 0.7, P(H|B) = 0.5, P(T|B) = 0.5, P(H|L) = 0.1, and P(T|L) = 0.9.  
+              </p>
+              <p>
+              	(As Set Forth in the CSCI 580 Artificial Intelligence Project 2 Specifications)
+              </p>
+            </td>
+          </tr>
+      </tbody>
+      </table>
+    <table class="table table-bordered table-condensed table-striped">
+      <thead class="cwm-black-glass">
+        <th>Specify the Length of Generated Sequences</th>
+      </thead>
+      <tbody class="cwm-off-white-glass">
+        <tr>
+          <td>
+            <div class="form-group">
+              <label class="radio"><span id="hmm-number-label">N =</span>    
+                <input id="hmm-number-input" type="number" min="0" placeholder="Example: 100">
+                <p  id="hmm-number-input-error" class="hmm-file-error-text text-danger hidden">You must enter a positive integer value in this field.</p>
+              </label>
+            </div>
+          </td>
+        </tr>
+        <tr class="cwm-white-glass">
+          <td><div class="cwm-submit-button pull-right" id="cwm-submit-button-start"></div></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="col-md-4">
+        <table class="table table-bordered table-condensed table-striped">
+          <tbody class="cwm-off-white-glass">
+            <tr>
+              <td class="start-screen-banner hmm-text-align-center">
+                <img class="hmm-graph" src="img/hmm-graph-3d.png" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div><!--row-->
+
+  <div class="row">
+  
+  <div class="col-md-12">
+    <table class="table table-bordered table-condensed cwm-black-glass" style="table-layout: fixed; word-wrap: break-word;">
+      <thead>
+        <th>Generated Observation and State Sequences (Assume that the first coin tossed is balanced.)</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Generated Observation Sequence (<span class="text-success">length: <%= em_virtibi.get("generatedObservationSequence").length %></span>)</td>
+          <td><%= em_virtibi.get("generatedObservationSequence") %></td>
+        </tr>
+
+        <tr>
+          <td>Generated State Sequence (<span class="text-success">length: <%=em_virtibi.get("generatedStateSequence").length %></span>)</td>
+          <td><%= em_virtibi.get("generatedStateSequence") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,136 @@
+<div class="col-md-12  preview-screen-stats">
+ <div class="row">
+    <div class="col-md-8">
+      <table class="table table-bordered table-condensed table-striped">
+        <tbody class="">
+          <tr>
+            <td class="cwm-green-glass">
+              <h3>Settings Preview</h3>
+			  	<p>
+			  	Please look over your selected settings and verify that they are correct. If they are in order, click the <strong>Submit</strong> button to begin. If they are incorrect, please make sure that the files you uploaded are formatted properly and that they contain valid inputs and click the <strong>Back</strong> button.
+			    </p>
+            </td>
+          </tr>
+      </tbody>
+      </table>
+
+      <table class="table table-condensed table-bordered cwm-black-glass" style="table-layout: fixed; word-wrap: break-word;">
+			<caption>Initial Sensory and Transition Model Probabilities</caption>
+		  <tbody>
+		    <tr>
+		      <td>P(B|B):</td>
+		      <td><%= em_virtibi.get("B_B") %></td>
+		    </tr>
+		    <tr>
+		      <td>P(B|L):</td>
+		      <td><%= em_virtibi.get("B_L") %></td>
+		    </tr>
+		    <tr>
+		      <td>P(L|L):</td>
+		      <td><%= em_virtibi.get("L_L") %></td>
+		    </tr>
+		    <tr>
+		      <td>P(L|B):</td>
+		      <td><%= em_virtibi.get("L_B") %></td>
+		    </tr>
+		    <tr>
+		    <tr>
+		      <td>P(H|B):</td>
+		      <td><%= em_virtibi.get("H_B") %></td>
+		    </tr>
+		    <tr>
+		      <td>P(T|B):</td>
+		      <td><%= em_virtibi.get("T_B") %></td>
+		    </tr>
+		    <tr>
+		      <td>P(H|L):</td>
+		      <td><%= em_virtibi.get("H_L") %></td>
+		    </tr>
+		    <tr>
+		      <td>P(T|L):</td>
+		      <td><%= em_virtibi.get("T_L") %></td>
+		    </tr>
+		      <td>
+		      	<% if(probabilityFile.get("input").length) { %>
+					Source: <span class="text-success"><%= probabilityFile.get("name") %></span>
+				<% } else { %>
+					Source: <span class="text-success">Initial Default Values</span>
+				<% } %>
+		      </td>
+		      <td></td>
+		    </tr>
+		  </tbody>
+		</table>
+
+		<table class="table table-condensed table-bordered cwm-black-glass" style="table-layout: fixed; word-wrap: break-word;">
+			<caption>Observation Sequence Settings</caption>
+			<tbody>
+				<tr>
+					<td>N</td>
+					<td><%= em_virtibi.get("n") %></td>
+				</tr>
+				<% if(em_virtibi.get("observationSequence").length) { %>
+				<tr>
+					<td>Observation Sequence (Length: <span class="text-success"><%= em_virtibi.get("observationSequence").length %></span>)</td>
+					<td><%= em_virtibi.get("observationSequence") %></td>
+				</tr>
+				<tr>
+					<td>Source:  <span class="text-success"><%= observationFile.get("name") %></span></td>
+					<td></td>
+				</tr>			
+				<% } else { %>
+				<tr>
+					<td>Generated Observation Sequence Length</td>
+					<td><%= em_virtibi.get("generatedObservationSequence").length %></td>
+				</tr>
+				<tr>
+					<td>Generated Observation Sequence</td>
+					<td><%= em_virtibi.get("generatedObservationSequence") %></td>
+				</tr>
+				<tr>
+					<td>Generated State Sequence</td>
+					<td><%= em_virtibi.get("generatedStateSequence") %></td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+
+    </div>
+    <div class="col-md-4">
+        <table class="table">
+          <tbody class="cwm-off-white-glass">
+            <tr class="preview-screen-stats">
+              <td class="start-screen-banner hmm-text-align-center">
+                <img class="hmm-graph" src="img/hmm-graph-3d.png" />
+              </td>
+            </tr>
+            <tr>
+              <td class="cwm-white-glass">
+            	<div class="cwm-submit-button pull-right" id="cwm-submit-button-preview"></div>
+            	<div class="cwm-back-button pull-right" id="cwm-back-button-preview"></div>
+			  </td>
+			 </tr>
+          </tbody>
+        </table>
+      </div>
+  </div><!--row-->
+
+
+
+
+
+		
+	
+	
+	
+
+	
+
+</div>
+
+
+
+
+
+
+

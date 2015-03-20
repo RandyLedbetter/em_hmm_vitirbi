@@ -1,0 +1,184 @@
+<div class="col-md-12  preview-screen-stats" id="em-results-view">
+ <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-condensed table-striped">
+        <tbody>
+          <tr>
+            <td class="cwm-green-glass">
+              <h3>Expectation-Maximization and Vertibi Algorithm - Full Program Results</h3>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div><!-- row -->
+</div><!--col-md-12-->
+
+
+
+<div class="row">
+   <div class="col-md-6">
+      <table class="table table-condensed table-bordered cwm-black-glass" style="table-layout: fixed; word-wrap: break-word;">
+			<caption>Initial Input Sensory and Transition Probabilities</caption>
+		  <tbody>
+		    <tr>
+		      <td>P(B|B):</td>
+		      <td><%= em_virtibi.get("generated_B_B") %></td>
+		      <td>P(H|B):</td>
+		      <td><%= em_virtibi.get("generated_H_B") %></td>
+		    </tr>
+		    <tr>
+		      <td>P(B|L):</td>
+		      <td><%= em_virtibi.get("generated_B_L") %></td>
+		      <td>P(T|B):</td>
+		      <td><%= em_virtibi.get("generated_T_B") %></td>
+		    </tr>
+		    <tr>
+		      <td>P(L|L):</td>
+		      <td><%= em_virtibi.get("generated_L_L") %></td>
+		      <td>P(H|L):</td>
+		      <td><%= em_virtibi.get("generated_H_L") %></td>
+		    </tr>
+		    <tr>
+		      <td>P(L|B):</td>
+		      <td><%= em_virtibi.get("generated_L_B") %></td>
+		      <td>P(T|L):</td>
+		      <td><%= em_virtibi.get("generated_T_L") %></td>
+		    </tr>
+		      <td>
+		      	<% if(probabilityFile.get("input").length) { %>
+					Source: <span class="text-success"><%= probabilityFile.get("name") %></span>
+				<% } else { %>
+					Source: <span class="text-success">Initial Default Values</span>
+				<% } %>
+		      </td>
+		      <td></td>
+		    </tr>
+		  </tbody>
+		</table>
+
+		<table class="table table-condensed table-bordered cwm-black-glass" style="table-layout: fixed; word-wrap: break-word;">
+			<caption>Input Observation Sequence Source and Number of Iterations</caption>
+			<tbody>
+				<tr>
+					<td>N</td>
+					<td><%= em_virtibi.get("n") %></td>
+				</tr>
+				<% if(em_virtibi.get("observationSequence").length) { %>
+				<tr>
+					<td>Observation Sequence <span class="text-success">(length: <%= em_virtibi.get("observationSequence").length %>)</span></td>
+					<td><%= em_virtibi.get("observationSequence") %></td>
+				</tr>
+				<tr>
+					<td>Source:  <span class="text-success"><%= observationFile.get("name") %></span></td>
+					<td></td>
+				</tr>			
+				<% } else { %>
+				<tr>
+					<td>Generated Observation Sequence Length</td>
+					<td><%= em_virtibi.get("generatedObservationSequence").length %></td>
+				</tr>
+				<tr>
+					<td>Generated Observation Sequence</td>
+					<td><%= em_virtibi.get("generatedObservationSequence") %></td>
+				</tr>
+				<tr>
+					<td>Generated State Sequence</td>
+					<td><%= em_virtibi.get("generatedStateSequence") %></td>
+				</tr>
+				<% } %>
+			</tbody>
+		</table>
+
+    <table class="table table-condensed table-bordered cwm-black-glass" style="table-layout: fixed; word-wrap: break-word;">
+      <caption>Learned Sensory and Transition Probabilities After <%= em_virtibi.get("n") %> Iterations</caption>
+      <tbody>
+        <tr>
+          <td>P(B|B):</td>
+          <td><%= em_virtibi.get("B_B") %></td>
+          <td>P(H|B):</td>
+          <td><%= em_virtibi.get("H_B") %></td>
+        </tr>
+        <tr>
+          <td>P(B|L):</td>
+          <td><%= em_virtibi.get("B_L") %></td>
+          <td>P(T|B):</td>
+          <td><%= em_virtibi.get("T_B") %></td>
+        </tr>
+        <tr>
+          <td>P(L|L):</td>
+          <td><%= em_virtibi.get("L_L") %></td>
+          <td>P(H|L):</td>
+          <td><%= em_virtibi.get("H_L") %></td>
+        </tr>
+        <tr>
+          <td>P(L|B):</td>
+          <td><%= em_virtibi.get("L_B") %></td>
+          <td>P(T|L):</td>
+          <td><%= em_virtibi.get("T_L") %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+    <div class="col-md-6">
+     <table class="table table-condensed table-bordered cwm-black-glass" style="table-layout: fixed; word-wrap: break-word;">
+      <caption>Viterbi Output: Most Probable Sequence of States</caption>
+      <tbody>
+        <tr>
+          <td>Most Probable Sequence of States (<span class="text-success"><%= em_virtibi.get("stateSequence").length %></span>)</td>
+          <td><%= em_virtibi.get("stateSequence") %></td>
+        </tr>
+      </tbody>
+     </table>
+
+     <table class="table table-condensed table-bordered cwm-black-glass" style="table-layout: fixed; word-wrap: break-word;">
+      <caption>Binary Classification</caption>
+      <tbody>
+        <tr>
+          <td>Observation Sequence: <span class="text-success">(length: <%= em_virtibi.get("observationSequence").length %>)</span></td>
+          <td><%= em_virtibi.get("observationSequence") %></td>
+        </tr>
+        <tr>
+          <td>Actual State Sequence: <span class="text-success">(length: <%= em_virtibi.get("generatedStateSequence").length %>)</span></td>
+          <td><%= em_virtibi.get("generatedStateSequence") %></td>
+        </tr>
+        <tr>
+          <td>Vertibi State Sequence: <span class="text-success">(length: <%= em_virtibi.get("stateSequence").length %>)</span></td>
+          <td><%= em_virtibi.get("stateSequence") %></td>
+        </tr>
+      </tbody>
+      
+    </table>
+    <table class="table table-condensed table-bordered cwm-black-glass">
+    <tbody>
+        <tr>
+          <td>True Positive (TP):</td>
+          <td><%= em_virtibi.get("tp") %></td>
+          <td>Sensitivity (TPR - True Positive Rate):</td>
+          <td><%= em_virtibi.get("sensitivity") %></td>
+        </tr>
+        <tr>
+          <td>True Negative (TN):</td>
+          <td><%= em_virtibi.get("tn") %></td>
+          <td>Specificity (SPC - True Negative Rate):</td>
+          <td><%= em_virtibi.get("specificity") %></td>
+        </tr>
+        <tr>
+          <td>False Positive (FP):</td>
+          <td><%= em_virtibi.get("fp") %></td>
+          <td>False Positive Rate (FPR):</td>
+          <td><%= em_virtibi.get("fpr") %></td>
+        </tr>
+        <tr>
+          <td>False Negative (FN):</td>
+          <td><%= em_virtibi.get("fn") %></td>
+          <td>Accuracy (ACC):</td>
+          <td><%= em_virtibi.get("accuracy") %></td>
+        </tr>
+      </tbody>
+  </table>
+    </div>
+  </div><!--row-->
+</div>
+
+  
