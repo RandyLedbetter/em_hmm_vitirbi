@@ -1,6 +1,6 @@
 var connect = require('connect'),
-    http = require('http');
+    port = 3001;
 
-connect()
-    .use(connect.static('./public'))
-    .listen(3000);
+connect.createServer(connect.static(__dirname + '/public')).listen(port);
+console.log('Listening on ' + port + '...');
+console.log('Press Ctrl + C to stop.');
